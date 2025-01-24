@@ -1,6 +1,9 @@
 pipeline {
     agent any
-
+environment {
+    AWS_ACCESS_KEY_ID = credentials('AKIAUQ4L3NZQHDNZOI6D')
+    AWS_SECRET_ACCESS_KEY = credentials('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')
+  }
     parameters {
         choice(
             name: 'ACTION',
