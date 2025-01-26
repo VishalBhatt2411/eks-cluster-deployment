@@ -1,6 +1,6 @@
 pipeline {
     agent any
-}
+    
     parameters {
         choice(
             name: 'ACTION',
@@ -12,23 +12,23 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/ankit-jagtap-devops/terraform-eks-nodegroup.git'}
+                git 'https://github.com/ankit-jagtap-devops/terraform-eks-nodegroup.git'
             }
         }
     
-        stage ("terraform init") {
+        stage("terraform init") {
             steps {
-                sh ("terraform init -reconfigure") 
+                sh "terraform init -reconfigure"
             }
         }
         
-        stage ("plan") {
+        stage("plan") {
             steps {
-                sh ('terraform plan') 
+                sh 'terraform plan'
             }
         }
 
-        stage (" Action") {
+        stage("Action") {
             steps {
                 script {
                     switch (params.ACTION) {
@@ -46,3 +46,5 @@ pipeline {
                 }
             }
         }
+    }
+}
